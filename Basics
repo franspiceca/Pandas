@@ -1,0 +1,22 @@
+##working with diamonds data set
+import numpy as np
+from seaborn import load_dataset
+df = load_dataset("diamonds")
+np.random.seed(0)
+df.iloc[np.random.randint(0, len(df), 10), :] = None
+df
+
+##the columns of df
+cols = df.columns
+
+##the first 10 rows
+tenrows = df[:10]
+
+##all rows under the column cut
+cutcols = df.cut
+
+##all rows in which the cut is Premium and the color is G and the price is greater than 10000
+gpremium = df[(df.cut == "Premium") & (df.color == "G") & (df.price > 10000)]
+
+##all rows with any null values
+df[df.isnull().any(axis=1)]
